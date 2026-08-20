@@ -6,14 +6,18 @@ Keywords: hero offer, promotional banner, magic app, home hero slot, upsell, lim
 
 ## Anatomy
 
+![Anatomy](nFS-KhWJjQm6mfDfNKTnXA.png)
+
 1. **Container:** Groups all elements. Fixed height 192px at default text scale (240px from 160%–190% text scaling). Full width minus outer horizontal padding. Corner radius `border.radius.geometry.xlarge` (24). Border 1px `color.border.default`. Elevation `[Magic] Elevation / Default`. Clips overflow.
 2. **Asset:** Full-bleed background media at **21:9** aspect ratio. Supports static image (V3.0), Rive animation (V3.1), and video (V3.2 — not shipped). Progressive blur starts at 50% image height and reaches **12dp / 6px** at the bottom edge. Decorative — excluded from screen readers.
-   - **Fallback asset:** Static image shown while the primary asset loads or after playback failure (required for Rive/video).
+  - **Fallback asset:** Static image shown while the primary asset loads or after playback failure (required for Rive/video).
 3. **Scrim:** Gradient and inner-shadow overlay that tints with `scrimColor` and blends the asset into the content zone for text contrast.
-   - **Bottom gradient:** Linear, 180°. Stops: 0% and 30% = `scrimColor` at 0% opacity; 60% = `scrimColor` at 100%.
-   - **Inner shadow:** X 0, Y −12, blur 20, spread −4, color `scrimColor`, type inner.
+  - **Bottom gradient:** Linear, 180°. Stops: 0% and 30% = `scrimColor` at 0% opacity; 60% = `scrimColor` at 100%.
+  - **Inner shadow:** X 0, Y −12, blur 20, spread −4, color `scrimColor`, type inner.
 4. **Content BB:** `BB / Hero Offer Content BB` — title + description text stack anchored to the bottom content zone.
 5. **Dismiss Button:** `[Magic] Icon Action` with `close_mini` icon, absolute top-right. Tap target 48×48 (inherited). Gives the customer control to permanently opt out of the specific offer.
+
+
 
 ## Properties
 
@@ -85,10 +89,14 @@ Primary role is **awareness** of strategic products. Conversion is secondary.
 - Routine retargeting, cross-sell, brand delight, marketplace, B2B ecosystem, or non-proprietary Nubank products
 - Always-on or overlapping campaigns (max **1 Hero Offer campaign per customer per month**)
 
+
+
 ### Placement
 
 - Single instance in the **home hero slot**, above the widget grid
 - Never coexists with an active Hero Callout in the same session
+
+
 
 ### Hierarchy
 
@@ -100,6 +108,8 @@ Hero Callout (#1) always wins the hero slot. Hero Offer appears only when no Her
 2. Colors should visually match the asset so the scrim appears to blend seamlessly into the content zone.
 3. Apply the same **Content Color** token to both Title and Description (description renders at 80% opacity).
 
+
+
 ### Checking contrast
 
 1. Every Scrim + Content pair must meet **WCAG AA** (minimum **4.5:1** contrast ratio).
@@ -107,22 +117,28 @@ Hero Callout (#1) always wins the hero slot. Hero Offer appears only when no Her
 3. Use Figma's color picker contrast check (Normal Text ✓ AA).
 4. If it fails, choose a more contrasting primitive for Scrim or Content until it passes.
 
+
+
 ### Safe defaults
 
 - Pairs with **≥5 shade steps** between scrim and content usually pass (e.g. scrim `color.purple.30` + content `color.teal.80` at 80%).
 - Light scrim (shade ≤30): content `color.gray.100` at 80%.
 - Dark scrim (shade ≥60): content `color.white.alpha.white` at 80%.
 
+
+
 ### Campaign lifecycle (governance)
 
-| Rule | Value |
-| --- | --- |
-| Campaigns per customer per month | **1** |
-| Max impressions (sessions) per campaign | **5** |
-| Campaign duration from first exposure | **7 days** |
-| Dismiss | Permanent suppression for that specific offer |
-| Awareness signal (click, dismiss, omnichannel interaction, downstream product screen view) | Permanent removal for that offer |
-| Conversion | Permanent removal |
+
+| Rule                                                                                       | Value                                         |
+| ------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| Campaigns per customer per month                                                           | **1**                                         |
+| Max impressions (sessions) per campaign                                                    | **5**                                         |
+| Campaign duration from first exposure                                                      | **7 days**                                    |
+| Dismiss                                                                                    | Permanent suppression for that specific offer |
+| Awareness signal (click, dismiss, omnichannel interaction, downstream product screen view) | Permanent removal for that offer              |
+| Conversion                                                                                 | Permanent removal                             |
+
 
 These rules will be reviewed in **H2 2026** through A/B testing on saturation before day 7 or the 5-session limit.
 
@@ -151,17 +167,25 @@ These rules will be reviewed in **H2 2026** through A/B testing on saturation be
 - Force Hero Offer above an active Hero Callout
 - Ship Rive without a static fallback asset
 
+
+
 ## Behavior
+
+
 
 ### Interactions
 
 - **Card tap** — fires `onPressed`; opens offer destination. Standard card press feedback.
 - **Dismiss tap** — fires `onDismiss`; Icon Action press feedback. Permanent opt-out for the offer. No card-level dismiss animation.
 
+
+
 ### Animations
 
 - **Rive load failure → fallback:** opacity crossfade, **350ms**, easing `cubic-bezier(0.26, 0.82, 0.53, 0.98)`.
 - **Entry / exit** — governed by campaign orchestration (Purple Hub), not component-level motion tokens.
+
+
 
 ### Scrolling
 
@@ -172,6 +196,8 @@ Hero Offer lives in the fixed hero region on Home; it scrolls with the page layo
 - **Asset loading** — show `fallbackAsset` immediately if primary asset (Rive) is not ready. Prioritize TTFD < 1s on Home. No continuous retry after failure.
 - **Pull-to-refresh (cached Rive)** — render Rive immediately; skip fallback to avoid flicker.
 - **Suppressed states** — not rendered when Hero Callout is active or governance exit criteria are met.
+
+
 
 ### Contrast validation (runtime)
 
@@ -195,16 +221,22 @@ Safe color resolution walks the content color palette toward a passing step; if 
 
 ## Accessibility
 
+
+
 ### Color contrast
 
 - Title + description on scrim must meet **≥ 4.5:1** (WCAG AA). Always test description at **80% opacity**.
 - Do not rely on asset contrast alone; scrim + content color carry readability.
 - Validate pairs in Figma before handoff using the Usage contrast workflow.
 
+
+
 ### Text wrapping
 
 - **Title:** max 2 lines, ellipsis.
 - **Description:** max 2 lines at default scale; max **3 lines** from 110% text scaling; ellipsis; 80% opacity.
+
+
 
 ### Text scaling
 
@@ -212,6 +244,8 @@ Component adapts starting at **110%** system text scale:
 
 - **110%–150%:** Description max lines increased to **3**. Container height stays **192px**.
 - **160%–190%:** Container **height** increased to **240px**.
+
+
 
 ### Screen reader labeling
 
@@ -233,7 +267,7 @@ Standards: WCAG 2.2 — **1.4.3** (contrast), **2.5.5** (target size 48dp).
 
 **Sources**
 
-- Figma component: [NuDS v3 — `[Magic] Hero Offer`](https://www.figma.com/design/RxzAEZlmQX8Outs7RYQWw2/-WIP--NuDS-V3-%E2%80%93%C2%A01st-Level?node-id=8141-487)
+- Figma component: [NuDS v3 —](https://www.figma.com/design/RxzAEZlmQX8Outs7RYQWw2/-WIP--NuDS-V3-%E2%80%93%C2%A01st-Level?node-id=8141-487) `[Magic] Hero Offer`
 - Figma usage: [Picking scrim/content, contrast, safe defaults](https://www.figma.com/design/RxzAEZlmQX8Outs7RYQWw2/-WIP--NuDS-V3-%E2%80%93%C2%A01st-Level?node-id=8306-574)
 - Figma handoff: [NuDS Magic App — Hero Offer](https://www.figma.com/design/bgOjXshhmdDwyio21Pd7pa/NuDS-Magic-App-%E2%80%93-Handoff?node-id=26152-2237)
 - Governance: [Hero Offer — Governance Definition](https://nubank.atlassian.net/wiki/spaces/FCB/pages/265015759544/Hero+Offer+-+Governance+Definition) (APPROVED, Feb 2026)
