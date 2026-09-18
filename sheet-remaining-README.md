@@ -6,9 +6,9 @@ Diff entre a biblioteca Figma **NuDS – Foundations / Icons** e a planilha de r
 
 - Ícones na planilha: **139** linhas / **138** nomes únicos
 - Folhas únicas no Figma: **348**
-- Restantes (ainda não listados): **209**
+- Restantes (ainda não listados): **210**
 - Ordem: **aleatória** (seed `20260918`) — sem prioridade
-- Ranks sugeridos: **140–349** (sem o 206; era um frame “Icon Grid”, não um ícone)
+- Ranks sugeridos: **140–350** (sem o 206; era um frame “Icon Grid”, não um ícone)
 
 ## Arquivos
 
@@ -40,3 +40,8 @@ Hospedados em:
 - Keywords preenchidas a partir da description no Figma (6 ícones sem Keywords no Figma ficaram vazios).
 - Brief / Creative Freedom ficaram vazios.
 - Estilo filled da planilha: `TRUE` só quando o export foi filled.
+
+
+## Update
+
+- Added `face_scan` (#350) from WIP Assets file (`4GbylpuVyNTPRgNgfwaGpS`, node `5374:147`).

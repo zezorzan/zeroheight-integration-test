@@ -208,3 +208,4 @@
 347	To Do	single_bed	=IMAGE("https://raw.githubusercontent.com/zezorzan/zeroheight-integration-test/main/icon-previews-remaining/347-single_bed.png")	FALSE	FALSE	Categories			hotel, sleep, furniture, bedroom, mattress
 348	To Do	close_mini	=IMAGE("https://raw.githubusercontent.com/zezorzan/zeroheight-integration-test/main/icon-previews-remaining/348-close_mini.png")	FALSE	FALSE	UI Actions			x, cerrar, fechar, cancel
 349	To Do	half_dotted_circle	=IMAGE("https://raw.githubusercontent.com/zezorzan/zeroheight-integration-test/main/icon-previews-remaining/349-half_dotted_circle.png")	FALSE	FALSE	Actions			pending, task, requirement, validation, in progress, empty
+350	To Do	face_scan	=IMAGE("https://raw.githubusercontent.com/zezorzan/zeroheight-integration-test/main/icon-previews-remaining/350-face_scan.png")	FALSE	FALSE	Human			biometry, authentication, face, scan, recognition
