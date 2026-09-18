@@ -18,6 +18,8 @@ Diff entre a biblioteca Figma **NuDS – Foundations / Icons** e a planilha de r
 | `sheet-remaining-preview-only.csv` | Só coluna Preview (`=IMAGE(...)`) |
 | `sheet-remaining-names-only.csv` | Só nomes |
 | `sheet-remaining-category-only.csv` | Só categorias |
+| `sheet-remaining-keywords-only.csv` | Só Keywords (da description no Figma) |
+| `sheet-agency-append.csv` | Mesmo conteúdo para colar na planilha da agência |
 | `sheet-remaining-icons.csv` | Completo + path Figma / node id |
 | `icon-previews-remaining/` | PNGs @2x (48×48), fundo transparente |
 
@@ -35,5 +37,6 @@ Hospedados em:
 ## Observações
 
 - Preferimos variante **outlined**; só **3** ícones saíram filled (não tinham outlined).
-- Keywords / Brief / Creative Freedom ficaram vazios — a agência pode preencher depois.
+- Keywords preenchidas a partir da description no Figma (6 ícones sem Keywords no Figma ficaram vazios).
+- Brief / Creative Freedom ficaram vazios.
 - Estilo filled da planilha: `TRUE` só quando o export foi filled.
